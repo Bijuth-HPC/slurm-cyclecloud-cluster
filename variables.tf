@@ -31,6 +31,7 @@ variable "cyclecloud_dns_label" {
 
 
 variable "cyclecloud_username" {
+  description = " cyclecloud user"
 }
 
 variable "cyclecloud_password" {
