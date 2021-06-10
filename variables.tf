@@ -3,7 +3,6 @@ variable "prefix" {
   default = "cc-tf"
 }
 
-
 variable "location" {
   description = "The Azure Region in which to run CycleCloud"
   default = "westus2"
@@ -13,7 +12,6 @@ variable "machine_type" {
   description = "The Azure Machine Type for the CycleCloud VM"
   default = "Standard_DS4_v2"
 }
-
 
 variable "os_disk_size_gb" {
   description = "The size of the OS disk for the CycleCloud VM (should be >= 128GB and >= 256 for large clusters)"
@@ -29,7 +27,6 @@ variable "cyclecloud_dns_label" {
   description = "An optional short public DNS name/label for the CycleCloud VM"
 }
 
-
 variable "cyclecloud_username" {
   description = " cyclecloud user"
 }
@@ -41,7 +38,6 @@ variable "cyclecloud_password" {
 variable "cyclecloud_user_publickey" {
   description = "The public key for the initial CycleCloud Admin user and VM user"
 }
-
 
 # Storage account name can contain only lowercase letters and numbers.
 variable "cyclecloud_storage_account" {
