@@ -1,7 +1,7 @@
 locals {
   virtual_machine_name = "${var.prefix}-vm"
   cyclecloud_install_script_url = "https://raw.githubusercontent.com/bwatrous/cyclecloud-terraform/master/scripts/cyclecloud_install.py"
-  slurm_url = "https://raw.githubusercontent.com/Bijuth-HPC/cyclecloud-terraform-nsg/master/scripts/slurm.txt"
+  slurm_url = "https://raw.githubusercontent.com/Bijuth-HPC/slurm-cyclecloud-cluster/master/scripts/slurm.txt"
 }
 
 provider "azurerm" {
