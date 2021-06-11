@@ -1,4 +1,4 @@
 # cyclecloud-terraform
 Simple Terraform deployment for Azure CycleCloud
 
-This Deployment will also setup a slurm cluster using the template /scripts/slurm.txt with multi node Array
+This Deployment will also setup slurm cluster using template (/scripts/slurm.txt) with multi node Array
