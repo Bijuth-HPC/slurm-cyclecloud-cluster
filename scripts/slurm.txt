@@ -116,10 +116,10 @@ Autoscale = $Autoscale
         type = nfs
 
 
-    [[nodearray lowgpu]]
-    MachineType = $lowGPUMachineType
+    [[nodearray GPU4]]
+    MachineType = $4GPUMachineType
     ImageName = $GPUImageName
-    MaxCoreCount = $MaxlowGPUExecuteCoreCount
+    MaxCoreCount = $Max4GPUExecuteCoreCount
     Azure.MaxScalesetSize = $MaxScalesetSize
     AdditionalClusterInitSpecs = $ExecuteClusterInitSpecs
 
@@ -135,10 +135,29 @@ Autoscale = $Autoscale
         [[[network-interface eth0]]]
         AssociatePublicIpAddress = $ExecuteNodesPublic
 
-    [[nodearray highgpu]]
-    MachineType = $highGPUMachineType
+    [[nodearray GPU24]]
+    MachineType = $24GPUMachineType
     ImageName = $GPUImageName
-    MaxCoreCount = $MaxhighGPUExecuteCoreCount
+    MaxCoreCount = $Max24GPUExecuteCoreCount
+    Azure.MaxScalesetSize = $MaxScalesetSize
+    AdditionalClusterInitSpecs = $ExecuteClusterInitSpecs
+
+
+        [[[configuration]]]
+        slurm.autoscale = true
+        slurm.default_partition = true
+        slurm.gpu = true
+
+
+        [[[cluster-init slurm:execute:2.4.5]]]
+
+        [[[network-interface eth0]]]
+        AssociatePublicIpAddress = $ExecuteNodesPublic
+
+    [[nodearray promoGPU24]]
+    MachineType = $promoGPUMachineType
+    ImageName = $GPUImageName
+    MaxCoreCount = $Max24GPUExecuteCoreCount
     Azure.MaxScalesetSize = $MaxScalesetSize
     AdditionalClusterInitSpecs = $ExecuteClusterInitSpecs
 
@@ -215,17 +234,23 @@ Order = 10
         ParameterType = Cloud.MachineType
         DefaultValue = Standard_D4as_v4
 
-        [[[parameter lowGPUMachineType]]]
-        Label = Low GPU VM Type
+        [[[parameter 4GPUMachineType]]]
+        Label = 4 GPU VM Type
         Description = The VM type for HPC GPU execute nodes
         ParameterType = Cloud.MachineType
         DefaultValue = Standard_NC4as_T4_v3
 
-        [[[parameter highGPUMachineType]]]
-        Label = High GPU VM Type
+        [[[parameter 24GPUMachineType]]]
+        Label = 24 GPU VM Type
         Description = The VM type for HPC GPU execute nodes
         ParameterType = Cloud.MachineType
-        DefaultValue = Standard_NC6_Promo
+        DefaultValue = Standard_NC24s_v3
+
+        [[[parameter promoGPUMachineType]]]
+        Label = Promo GPU VM Type
+        Description = The VM type for HPC GPU execute nodes
+        ParameterType = Cloud.MachineType
+        DefaultValue = Standard_NC24s_v3_promo
 
         [[[parameter loginMachineType]]]
         Label = login VM Type
@@ -250,7 +275,7 @@ Order = 10
         Widget.Plugin = pico.form.BooleanCheckBox
         Widget.Label = Start and stop execute instances automatically
         
-        [[[parameter MaxlowGPUExecuteCoreCount]]]
+        [[[parameter Max4GPUExecuteCoreCount]]]
         Label = Low GPU Cores
         Description = The total number of GPU execute cores to start
         DefaultValue = 32
@@ -258,7 +283,7 @@ Order = 10
         Config.MinValue = 1
         Config.IntegerOnly = true
 
-        [[[parameter MaxhighGPUExecuteCoreCount]]]
+        [[[parameter Max24GPUExecuteCoreCount]]]
         Label = High GPU Cores
         Description = The total number of GPU execute cores to start
         DefaultValue = 32
@@ -516,6 +541,4 @@ Order = 20
         ParameterType = Boolean
         Config.Label = Access execute nodes from the Internet
         Conditions.Excluded := UsePublicNetwork isnt true
-    
-
-
+  
