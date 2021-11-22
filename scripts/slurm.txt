@@ -250,7 +250,7 @@ Order = 10
         Label = Promo GPU VM Type
         Description = The VM type for HPC GPU execute nodes
         ParameterType = Cloud.MachineType
-        DefaultValue = Standard_NC24s_v3_promo
+        DefaultValue = Standard_NC24_promo
 
         [[[parameter loginMachineType]]]
         Label = login VM Type
