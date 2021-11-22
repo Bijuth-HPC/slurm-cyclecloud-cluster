@@ -276,7 +276,7 @@ Order = 10
         Widget.Label = Start and stop execute instances automatically
         
         [[[parameter Max4GPUExecuteCoreCount]]]
-        Label = Low GPU Cores
+        Label = 4 GPU Cores
         Description = The total number of GPU execute cores to start
         DefaultValue = 32
         Config.Plugin = pico.form.NumberTextBox
@@ -284,7 +284,15 @@ Order = 10
         Config.IntegerOnly = true
 
         [[[parameter Max24GPUExecuteCoreCount]]]
-        Label = High GPU Cores
+        Label = 24 GPU Cores
+        Description = The total number of GPU execute cores to start
+        DefaultValue = 32
+        Config.Plugin = pico.form.NumberTextBox
+        Config.MinValue = 1
+        Config.IntegerOnly = true
+
+        [[[parameter promoGPUExecuteCoreCount]]]
+        Label = promo GPU Cores
         Description = The total number of GPU execute cores to start
         DefaultValue = 32
         Config.Plugin = pico.form.NumberTextBox
